@@ -1,0 +1,31 @@
+@layout.app({ title: 'Data Mutasi' })
+
+@slot('main')
+<div class="container mt-4">
+  <h2>Riwayat Mutasi Barang</h2>
+  <a href="/mutasi/create" class="btn btn-primary mb-3">Mutasi Barang</a>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Nama Barang</th>
+        <th>Kode</th>
+        <th>Asal</th>
+        <th>Tujuan</th>
+        <th>Tanggal</th>
+      </tr>
+    </thead>
+    <tbody>
+      @each(item in mutasi)
+      <tr>
+        <td>{{ item.barang.nama }}</td>
+        <td>{{ item.barang.kode_barang }}</td>
+        <td>{{ item.asalLokasi?.nama_lokasi }}</td>
+        <td>{{ item.tujuanLokasi?.nama_lokasi }}</td>
+        <td>{{ item.tanggal }}</td>
+      </tr>
+      @endeach
+    </tbody>
+  </table>
+</div>
+@endslot
+@end

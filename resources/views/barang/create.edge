@@ -1,0 +1,39 @@
+@layout.app({ title: 'Buat Barang' })
+
+@slot('main')
+<div class="container mt-4">
+  <h2>Tambah Barang</h2>
+  <form action="/barang" method="POST">
+    <div class="mb-3">
+      <label>Nama</label>
+      <input type="text" name="nama" class="form-control" required />
+    </div>
+    <div class="mb-3">
+      <label>Kode Barang</label>
+      <input type="text" name="kode_barang" class="form-control" required />
+    </div>
+    <div class="mb-3">
+      <label>Kategori</label>
+      <select name="kategori_id" class="form-control">
+        @each(kategori in kategoris)
+        <option value="{{ kategori.id }}">{{ kategori.nama_kategori }}</option>
+        @endeach
+      </select>
+    </div>
+    <div class="mb-3">
+      <label>Lokasi</label>
+      <select name="lokasi_id" class="form-control">
+        @each(lokasi in lokasis)
+        <option value="{{ lokasi.id }}">{{ lokasi.nama_lokasi }}</option>
+        @endeach
+      </select>
+    </div>
+    <div class="mb-3">
+      <label>Jumlah</label>
+      <input type="number" name="jumlah" class="form-control" required />
+    </div>
+    <button class="btn btn-primary">Simpan</button>
+  </form>
+</div>
+@endslot
+@end

@@ -1,0 +1,38 @@
+@layout.app({ title: 'Laporan zbbarang' })
+
+@slot('main')
+<div class="container mt-4">
+  <h2>Laporan Barang Aktif per Lokasi</h2>
+
+  @each(item in dataLaporan)
+  <div class="card mb-4">
+    <div class="card-header">
+      <strong>{{ item.nama_lokasi }}</strong> ({{ item.gedung }}) - Total Barang: {{ item.total }}
+    </div>
+    <div class="card-body p-0">
+      <table class="table table-sm table-bordered mb-0">
+        <thead>
+          <tr>
+            <th>Nama Barang</th>
+            <th>Kode</th>
+            <th>Kategori</th>
+            <th>Jumlah</th>
+          </tr>
+        </thead>
+        <tbody>
+          @each(barang in item.barangs)
+          <tr>
+            <td>{{ barang.nama }}</td>
+            <td>{{ barang.kode_barang }}</td>
+            <td>{{ barang.kategori.nama_kategori }}</td>
+            <td>{{ barang.jumlah }}</td>
+          </tr>
+          @endeach
+        </tbody>
+      </table>
+    </div>
+  </div>
+  @endeach
+</div>
+@endslot
+@end

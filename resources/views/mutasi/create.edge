@@ -1,0 +1,30 @@
+@layout.app({ title: 'Buat Mutasi' })
+
+@slot('main')
+<div class="container mt-4">
+  <h2>Mutasi Barang Antar Lokasi</h2>
+  <form action="/mutasi" method="POST">
+    <div class="mb-3">
+      <label>Pilih Barang</label>
+      <select name="barang_id" class="form-control" required>
+        @each(barang in barangs)
+        <option value="{{ barang.id }}">
+          {{ barang.nama }} ({{ barang.kode_barang }}) - Lokasi: {{ barang.lokasi.nama_lokasi }}
+        </option>
+        @endeach
+      </select>
+    </div>
+    <div class="mb-3">
+      <label>Tujuan Lokasi</label>
+      <select name="tujuan" class="form-control" required>
+        @each(lokasi in lokasis)
+        <option value="{{ lokasi.id }}">{{ lokasi.nama_lokasi }} - {{ lokasi.gedung }}</option>
+        @endeach
+      </select>
+    </div>
+    <button class="btn btn-primary">Mutasi</button>
+    <a href="/mutasi" class="btn btn-secondary">Kembali</a>
+  </form>
+</div>
+@endslot
+@end

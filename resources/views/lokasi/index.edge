@@ -1,0 +1,32 @@
+@layout.app({ title: 'Data Lokasi' })
+
+@slot('main')
+<div class="container mt-4">
+  <h2>Daftar Lokasi</h2>
+  <a href="/lokasi/create" class="btn btn-primary mb-3">Tambah Lokasi</a>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Nama Lokasi</th>
+        <th>Gedung</th>
+        <th>Aksi</th>
+      </tr>
+    </thead>
+    <tbody>
+      @each(lokasi in lokasis)
+      <tr>
+        <td>{{ lokasi.nama_lokasi }}</td>
+        <td>{{ lokasi.gedung }}</td>
+        <td>
+          <a href="/lokasi/{{ lokasi.id }}/edit" class="btn btn-sm btn-warning">Edit</a>
+          <form action="/lokasi/{{ lokasi.id }}/delete" method="POST" class="d-inline">
+            <button class="btn btn-sm btn-danger" onclick="return confirm('Hapus lokasi ini?')">Hapus</button>
+          </form>
+        </td>
+      </tr>
+      @endeach
+    </tbody>
+  </table>
+</div>
+@endslot
+@end

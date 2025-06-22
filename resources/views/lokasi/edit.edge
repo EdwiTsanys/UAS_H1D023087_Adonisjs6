@@ -1,0 +1,20 @@
+@layout.app({ title: 'Edit Lokasi' })
+
+@slot('main')
+<div class="container mt-4">
+  <h2>Edit Lokasi</h2>
+  <form action="/lokasi/{{ lokasi.id }}" method="POST">
+    <div class="mb-3">
+      <label>Nama Lokasi</label>
+      <input type="text" name="nama_lokasi" class="form-control" value="{{ lokasi.nama_lokasi }}" required />
+    </div>
+    <div class="mb-3">
+      <label>Gedung</label>
+      <input type="text" name="gedung" class="form-control" value="{{ lokasi.gedung }}" required />
+    </div>
+    <button class="btn btn-primary">Update</button>
+    <a href="/lokasi" class="btn btn-secondary">Kembali</a>
+  </form>
+</div>
+@endslot
+@end

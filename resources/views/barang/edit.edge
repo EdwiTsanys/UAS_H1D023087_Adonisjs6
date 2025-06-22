@@ -1,0 +1,44 @@
+@layout.app({ title: 'Edit Barang' })
+
+@slot('main')
+<div class="container mt-4">
+  <h2>Edit Barang</h2>
+  <form action="/barang/{{ barang.id }}" method="POST">
+    <div class="mb-3">
+      <label>Nama</label>
+      <input type="text" name="nama" class="form-control" value="{{ barang.nama }}" required />
+    </div>
+    <div class="mb-3">
+      <label>Kode Barang</label>
+      <input type="text" name="kode_barang" class="form-control" value="{{ barang.kode_barang }}" required />
+    </div>
+    <div class="mb-3">
+      <label>Kategori</label>
+      <select name="kategori_id" class="form-control" required>
+        @each(kategori in kategoris)
+        <option value="{{ kategori.id }}" {{ barang.kategori_id == kategori.id ? 'selected' : '' }}>
+          {{ kategori.nama_kategori }}
+        </option>
+        @endeach
+      </select>
+    </div>
+    <div class="mb-3">
+      <label>Lokasi</label>
+      <select name="lokasi_id" class="form-control" required>
+        @each(lokasi in lokasis)
+        <option value="{{ lokasi.id }}" {{ barang.lokasi_id == lokasi.id ? 'selected' : '' }}>
+          {{ lokasi.nama_lokasi }}
+        </option>
+        @endeach
+      </select>
+    </div>
+    <div class="mb-3">
+      <label>Jumlah</label>
+      <input type="number" name="jumlah" class="form-control" value="{{ barang.jumlah }}" required />
+    </div>
+    <button class="btn btn-primary">Update</button>
+    <a href="/barang" class="btn btn-secondary">Kembali</a>
+  </form>
+</div>
+@endslot
+@end

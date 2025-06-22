@@ -1,0 +1,20 @@
+@layout.app({ title: 'Buat Lokasi' })
+
+@slot('main')
+<div class="container mt-4">
+  <h2>Tambah Lokasi</h2>
+  <form method="POST" action="/lokasi" >
+    <div class="mb-3">
+      <label>Nama Lokasi</label>
+      <input type="text" name="nama_lokasi" class="form-control" required />
+    </div>
+    <div class="mb-3">
+      <label>Gedung</label>
+      <input type="text" name="gedung" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Simpan</button>
+    <a href="/lokasi" class="btn btn-secondary">Kembali</a>
+  </form>
+</div>
+@endslot
+@end

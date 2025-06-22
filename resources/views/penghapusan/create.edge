@@ -1,0 +1,26 @@
+@layout.app({ title: 'Buat Penghapusan' })
+
+@slot('main')
+<div class="container mt-4">
+  <h2>Hapus Barang Rusak</h2>
+  <form action="/penghapusan" method="POST">
+    <div class="mb-3">
+      <label>Pilih Barang</label>
+      <select name="barang_id" class="form-control" required>
+        @each(barang in barangs)
+        <option value="{{ barang.id }}">
+          {{ barang.nama }} ({{ barang.kode_barang }})
+        </option>
+        @endeach
+      </select>
+    </div>
+    <div class="mb-3">
+      <label>Alasan Penghapusan</label>
+      <input type="text" name="alasan" class="form-control" required />
+    </div>
+    <button class="btn btn-danger">Hapus</button>
+    <a href="/penghapusan" class="btn btn-secondary">Kembali</a>
+  </form>
+</div>
+@endslot
+@end

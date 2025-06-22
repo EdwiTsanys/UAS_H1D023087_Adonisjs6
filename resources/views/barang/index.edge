@@ -1,0 +1,45 @@
+@layout.app({ title: 'Daftar Barang' })
+  @slot('main')
+    <div class="container mt-4">
+      <h2>Daftar Barang</h2>
+      <a href="/barang/create" class="btn btn-primary mb-3">Tambah Barang</a>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Nama</th>
+            <th>Kode</th>
+            <th>Kategori</th>
+            <th>Lokasi</th>
+            <th>Jumlah</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          @each(barang in barangs)
+          <tr>
+            <td>{{ barang.nama }}</td>
+            <td>{{ barang.kode_barang }}</td>
+            <td>{{ barang.kategori.nama_kategori }}</td>
+            <td>{{ barang.lokasi.nama_lokasi }}</td>
+            <td>{{ barang.jumlah }}</td>
+            <td>
+          <a href="/barang/{{ barang.id }}/edit" class="btn btn-sm btn-warning">Edit</a>
+
+          {{-- Hapus karena rusak: arahkan ke form penghapusan --}}
+          <form action="/penghapusan/create" method="GET" style="display:inline;">
+            <input type="hidden" name="barang_id" value="{{ barang.id }}">
+            <button type="submit" class="btn btn-sm btn-secondary">Rusak</button>
+          </form>
+
+          {{-- Hapus permanen --}}
+          <form action="/barang/{{ barang.id }}/delete" method="POST" style="display:inline;" onsubmit="return confirm('Yakin hapus permanen?')">
+            <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+          </form>
+        </td>
+          </tr>
+          @endeach
+        </tbody>
+      </table>
+    </div>
+  @endslot
+@end

@@ -1,0 +1,28 @@
+@layout.app({ title: 'Data Penghapusan' })
+
+@slot('main')
+<div class="container mt-4">
+  <h2>Riwayat Penghapusan Barang Rusak</h2>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Nama Barang</th>
+        <th>Kode</th>
+        <th>Alasan</th>
+        <th>Tanggal</th>
+      </tr>
+    </thead>
+    <tbody>
+      @each(item in penghapusans)
+      <tr>
+        <td>{{ item.barang.nama }}</td>
+        <td>{{ item.barang.kode_barang }}</td>
+        <td>{{ item.alasan }}</td>
+        <td>{{ item.tanggal }}</td>
+      </tr>
+      @endeach
+    </tbody>
+  </table>
+</div>
+@endslot
+@end
