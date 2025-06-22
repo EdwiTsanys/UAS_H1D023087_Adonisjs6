@@ -9,7 +9,19 @@
 
 import router from '@adonisjs/core/services/router'
 
-router.on('/').render('barang/index')
+
+router.on('/').render('dashboard')
+
+/** AUTH Routes (login/register/logout) */
+router.get('/register', '#controllers/auth_controller.showRegister')
+router.post('/register', '#controllers/auth_controller.register')
+
+router.get('/login', '#controllers/auth_controller.showLogin')
+router.post('/login', '#controllers/auth_controller.login')
+
+router.post('/logout', '#controllers/auth_controller.logout')
+
+//router.on('/').render('barang/index')
 
 router.group(() => {
   router.get('/', '#controllers/barangs_controller.index')
